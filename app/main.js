@@ -11,6 +11,9 @@ let states = [];
 let correct_answer_index;
 let chosen_answer_index;
 
+const WRONG_ANSWER_MESSAGE = 'Unfortunately, your answer is wrong';
+const CORRECT_ANSWER_MESSAGE = 'You are right!';
+
 function handleClientLoad() {
 		gapi.load('client', initClient);
 }
@@ -55,7 +58,7 @@ function showRandomQuestion() {
 	if (exerciseData.length == 0) {
 		return; // or show a message?
 	}
-	let exerciseIndex = Math.floor(Math.random() * exerciseData.length);
+	exerciseIndex = Math.floor(Math.random() * exerciseData.length);
 	let exercise = exerciseData[exerciseIndex];
 
 	let questionElement = document.querySelector('#question');
@@ -70,7 +73,7 @@ function showRandomQuestion() {
 	}
 }
 
-function toggleChoice(index){
+function toggleChoice(index) {
 	console.log('toggling choices function place holder');
 	let oldChosenElement = document.querySelector('.option.chosen');
 	console.log(oldChosenElement);
@@ -84,7 +87,26 @@ function toggleChoice(index){
 }
 
 
-function myEvaluation(){
-		console.log('an evaluation function place holder')
+function myEvaluation() {
+	console.log('an evaluation function place holder');
+	let chosenOptionElement = document.querySelector('.chosen');
+	if (chosenOptionElement == null) {
+		// Ignore click if no answer has been chosen.
+		return;
+	}
+
+	let chosenAnswerIndex = parseInt(chosenOptionElement.id.split('-')[1]);
+	let exercise = exerciseData[exerciseIndex];
+	let correctAnswerIndex = exercise.answerIndex;
+	let evaluationMessage = '';
+	if (chosenAnswerIndex != correctAnswerIndex) {
+		evaluationMessage = WRONG_ANSWER_MESSAGE;
+	} else {
+		evaluationMessage = CORRECT_ANSWER_MESSAGE;
+	}
+	let evaluationMessageElement = document.querySelector('#evaluation-message');
+	evaluationMessageElement.innerHTML = `
+		<p>${evaluationMessage}</p>
+	`;
 }
 
