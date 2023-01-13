@@ -22,12 +22,13 @@
 		<button id="evaluate" onclick="myEvaluation()">Evaluate!</button>
 		<div id="evaluation-message"></div>
 
-		<button id="next" onClick="window.location.reload();" style="display:none;">Next random question</button>
+		<!-- <button id="next" onClick="window.location.reload();" style="display:none;">Next random question</button> -->
+		<button id="next" onClick="showNextQuestion()" style="display:none;">Next random question</button>
 
-				<script async defer src="https://apis.google.com/js/api.js"
+		<script async defer src="https://apis.google.com/js/api.js"
 						onload="this.onload=function(){};handleClientLoad()"
 						onreadystatechange="if (this.readyState === 'complete') this.onload()">
-				</script>
+		</script>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
