@@ -63,12 +63,24 @@ function showRandomQuestion() {
 
 	let optionsContainer = document.querySelector('#options-wrapper')
 	for (let optionIndex = 0; optionIndex < exercise.answerOptions.length; optionIndex++) {
-		optionsContainer.innerHTML += "<div class='unchosen option'><p class='text'>" + exercise.answerOptions[optionIndex] + "</p></div>";
+		optionsContainer.innerHTML += 
+			`<div id='option-${optionIndex}' class='unchosen option' onclick='toggleChoice(${optionIndex})'>
+				<p class='text'>${exercise.answerOptions[optionIndex]}</p>
+			</div>`;
 	}
 }
 
 function toggleChoice(index){
-		console.log('toggling choices function place holder')
+	console.log('toggling choices function place holder');
+	let oldChosenElement = document.querySelector('.option.chosen');
+	console.log(oldChosenElement);
+	if (oldChosenElement !== null) {
+		oldChosenElement.classList.remove('chosen');
+		oldChosenElement.classList.add('unchosen');
+	}
+	let optionElement = document.querySelector(`#option-${index}`);
+	optionElement.classList.remove('unchosen');
+	optionElement.classList.add('chosen');
 }
 
 
