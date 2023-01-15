@@ -130,3 +130,6 @@ html, body {
 .progress-bar.wrong {
 	background-color: var(--answer-wrong-color);
 }
+#final-result {
+	height: 60%;
+}

@@ -19,7 +19,7 @@ const WRONG_ANSWER_MESSAGE = 'Your answer is wrong';
 const CORRECT_ANSWER_MESSAGE = 'You are right!';
 
 function handleClientLoad() {
-		gapi.load('client', initClient);
+	gapi.load('client', initClient);
 }
 
 function initClient() {
@@ -37,8 +37,8 @@ function initClient() {
 
 function getExerciseData() {
 	gapi.client.sheets.spreadsheets.values.get({
-		spreadsheetId: '1hzA42BEzt2lPvOAePP6RLLRZKggbg0RWuxSaEwd5xLc',
-		range: 'Learning!A1:F10',
+	 spreadsheetId: '1hzA42BEzt2lPvOAePP6RLLRZKggbg0RWuxSaEwd5xLc',
+	 range: 'Learning!A1:F10',
 	}).then(function(response) {
 		console.log(response);
 		console.log(response.result.values);
@@ -66,22 +66,6 @@ function getExerciseData() {
 	});
 }
 
-function hideSpinner() {
-	toggleElementVisibility('spinner', false);
-}
-
-function showSpinner() {
-	toggleElementVisibility('spinner', true);
-}
-
-function showQuestionContainer() {
-	toggleElementVisibility('question-container', true);
-}
-
-function hideQuestionContainer() {
-	toggleElementVisibility('question-container', false);
-}
-
 function shuffleArrayIndices(length) {
 		let indices = [];
 		for (let i = 0; i < length; i++) {
@@ -102,7 +86,7 @@ function showNextQuestion() {
 		}
 		exerciseIndex = shuffledQuestionIndices[exerciseIndexInShuffledArray];
 		exerciseIndexInShuffledArray += 1;
-		// [TODO] check if there are still questions to show.
+
 		let exercise = exerciseData[exerciseIndex];
 
 		let questionElement = document.querySelector('#question');
@@ -137,48 +121,6 @@ function toggleChoice(index) {
 		optionElement.classList.add('chosen');
 }
 
-function updateProgressBar() {
-	const progressBarElement = document.getElementById('progress-bar');
-	if (progressBarElement !== null) {
-		const progressBarSegmentWidth = 100 / shuffledQuestionIndices.length;
-		progressBarElement.innerHTML = '';
-		for (let i = 0; i < results.length; i++) {
-			let resultClass = 'in-progress';
-			if (results[i] === true) {
-				resultClass = 'correct';
-			} else if (results[i] === false) {
-				resultClass = 'wrong';
-			}
-			progressBarElement.innerHTML += `
-				<div class="progress" role="progressbar" aria-label="Question ${i + 1}" aria-valuenow="${progressBarSegmentWidth}"
-						 aria-valuemin="0" aria-valuemax="100" style="width: ${progressBarSegmentWidth}%">
-					<div class="progress-bar ${resultClass}"></div>
-				</div>`;
-		}
-	}
-}
-
-function toggleElementVisibility(elementId, isVisible) {
-		let styleDisplayValue = '';
-		if (isVisible) {
-				styleDisplayValue = 'block';
-		} else {
-				styleDisplayValue = 'none !important';
-		}
-		const element = document.getElementById(elementId);
-		if (element !== null) {
-			element.style = `display: ${styleDisplayValue};`;
-		}
-}
-
-function showNextQuestionButton() {
-		toggleElementVisibility('next-container', true);
-}
-
-function hideNextQuestionButton() {
-		toggleElementVisibility('next-container', false);
-}
-
 function myEvaluation() {
 		let chosenOptionElement = document.querySelector('.chosen');
 		if (chosenOptionElement == null) {
@@ -201,8 +143,96 @@ function myEvaluation() {
 		answerIsEvaluated = true;
 		hideEvaluationButton();
 		showEvaluationMessage(isAnswerCorrect);
-		showNextQuestionButton();
 		updateProgressBar();
+		if (exerciseIndexInShuffledArray === exerciseData.length) {
+			showFinalResultButton();
+		} else {
+			showNextQuestionButton();
+		}
+}
+
+function updateProgressBar() {
+	const progressBarElement = document.getElementById('progress-bar');
+	if (progressBarElement !== null) {
+		const progressBarSegmentWidth = 100 / shuffledQuestionIndices.length;
+		progressBarElement.innerHTML = '';
+		for (let i = 0; i < results.length; i++) {
+			let resultClass = 'in-progress';
+			if (results[i] === true) {
+				resultClass = 'correct';
+			} else if (results[i] === false) {
+				resultClass = 'wrong';
+			}
+			progressBarElement.innerHTML += `
+				<div class="progress" role="progressbar" aria-label="Question ${i + 1}" aria-valuenow="${progressBarSegmentWidth}"
+						 aria-valuemin="0" aria-valuemax="100" style="width: ${progressBarSegmentWidth}%">
+					<div class="progress-bar ${resultClass}"></div>
+				</div>`;
+		}
+	}
+}
+
+function showFinalResult() {
+	hideQuestionContainer();
+	hideFinalResultButton();
+	let finalResult = 0;
+	let totalResult = 0;
+	for (let i = 0; i < results.length; i++) {
+		finalResult += results[i] ? exerciseData[i].score : 0;
+		totalResult += exerciseData[i].score;
+	}
+	toggleElementVisibility('final-result', true);
+	let finalResultElement = document.getElementById('final-result');
+	if (finalResultElement !== null) {
+		finalResultElement.innerHTML = `
+			Your final result is: <strong>${finalResult} / ${totalResult} (${Math.round(finalResult * 100 / totalResult)}%)</strong>.
+		`
+	}
+}
+
+function toggleElementVisibility(elementId, isVisible) {
+		let styleDisplayValue = '';
+		if (isVisible) {
+				styleDisplayValue = 'block';
+		} else {
+				styleDisplayValue = 'none !important';
+		}
+		const element = document.getElementById(elementId);
+		if (element !== null) {
+			element.style = `display: ${styleDisplayValue};`;
+		}
+}
+
+function hideSpinner() {
+	toggleElementVisibility('spinner', false);
+}
+
+function showSpinner() {
+	toggleElementVisibility('spinner', true);
+}
+
+function showQuestionContainer() {
+	toggleElementVisibility('question-container', true);
+}
+
+function hideQuestionContainer() {
+	toggleElementVisibility('question-container', false);
+}
+
+function showNextQuestionButton() {
+	toggleElementVisibility('next-container', true);
+}
+
+function hideNextQuestionButton() {
+		toggleElementVisibility('next-container', false);
+}
+
+function showFinalResultButton() {
+	toggleElementVisibility('final-result-btn-container', true);
+}
+
+function hideFinalResultButton() {
+	toggleElementVisibility('final-result-btn-container', false);
 }
 
 function hideEvaluationButton() {

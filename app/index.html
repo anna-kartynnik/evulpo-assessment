@@ -53,12 +53,20 @@
 					<p id="explanation">Here some explanation can be added. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris massa metus, varius sed mauris eget, bibendum porta mauris. Nam ornare venenatis leo sed fringilla. Integer eget elementum eros, nec eleifend nunc. Vestibulum porta, elit at fermentum vehicula, mauris risus sodales eros, a mollis leo arcu id massa. Donec tellus nisl, imperdiet ut ante id, varius convallis turpis. Nunc interdum, turpis sed consequat imperdiet, odio enim sollicitudin lectus, non sodales purus urna quis elit. Vivamus ipsum leo, scelerisque at neque ac, ultricies vulputate ipsum. Duis cursus elit quis libero elementum vestibulum. Nunc in tempor est. Aenean rhoncus ligula id massa pretium euismod. Vestibulum ac placerat massa. Vestibulum ut dapibus arcu, sed iaculis orci. Phasellus condimentum mattis ultrices. Duis placerat augue vel leo pulvinar scelerisque. Fusce imperdiet quam eu magna ultricies, ultrices fringilla nibh semper.</p>
 				</div>
 			</div>
-
-			<!-- <button id="next" onClick="window.location.reload();" style="display:none;">Next random question</button> -->
-			<div id="next-container" class="next-container w-100" style="display:none;">
-				<button id="next" class="btn btn-primary btn-lg" onclick="showNextQuestion()">Next random question</button>
-			</div>
 		</div>
+
+		<div id="final-result" class="d-flex flex-column justify-content-around" style="display:none;">
+
+		</div>
+
+		<!-- <button id="next" onClick="window.location.reload();" style="display:none;">Next random question</button> -->
+		<div id="next-container" class="next-container w-100" style="display:none;">
+			<button id="next" class="btn btn-primary btn-lg" onclick="showNextQuestion()">Next question</button>
+		</div>
+		<div id="final-result-btn-container" class="next-container w-100" style="display:none;">
+			<button id="final-result" class="btn btn-primary btn-lg" onclick="showFinalResult()">Final Result</button>
+		</div>
+
 	</div>
 
 	<script async defer src="https://apis.google.com/js/api.js"
