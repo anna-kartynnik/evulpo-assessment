@@ -118,3 +118,15 @@ html, body {
 	max-height: 80%;
 	overflow-y: auto;
 }
+#progress-bar {
+	margin: 0 1em;
+}
+.progress-bar.in-progress {
+	background-color: grey;
+}
+.progress-bar.correct {
+	background-color: var(--answer-correct-color);
+}
+.progress-bar.wrong {
+	background-color: var(--answer-wrong-color);
+}

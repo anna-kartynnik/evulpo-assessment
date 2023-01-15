@@ -8,11 +8,12 @@ let exerciseIndex;
 let exerciseIndexInShuffledArray = 0;
 let exerciseData;
 //let options;
-let states = [];
+//let states = [];
 //let correct_answer_index;
 //let chosen_answer_index;
 let shuffledQuestionIndices = [];
 let answerIsEvaluated = false;
+let results = [];
 
 const WRONG_ANSWER_MESSAGE = 'Your answer is wrong';
 const CORRECT_ANSWER_MESSAGE = 'You are right!';
@@ -115,6 +116,9 @@ function showNextQuestion() {
 								${exercise.answerOptions[optionIndex]}
 						</span>`;
 		}
+
+		results.push(null);
+		updateProgressBar();
 }
 
 function toggleChoice(index) {
@@ -131,6 +135,27 @@ function toggleChoice(index) {
 		let optionElement = document.querySelector(`#option-${index}`);
 		optionElement.classList.remove('unchosen');
 		optionElement.classList.add('chosen');
+}
+
+function updateProgressBar() {
+	const progressBarElement = document.getElementById('progress-bar');
+	if (progressBarElement !== null) {
+		const progressBarSegmentWidth = 100 / shuffledQuestionIndices.length;
+		progressBarElement.innerHTML = '';
+		for (let i = 0; i < results.length; i++) {
+			let resultClass = 'in-progress';
+			if (results[i] === true) {
+				resultClass = 'correct';
+			} else if (results[i] === false) {
+				resultClass = 'wrong';
+			}
+			progressBarElement.innerHTML += `
+				<div class="progress" role="progressbar" aria-label="Question ${i + 1}" aria-valuenow="${progressBarSegmentWidth}"
+						 aria-valuemin="0" aria-valuemax="100" style="width: ${progressBarSegmentWidth}%">
+					<div class="progress-bar ${resultClass}"></div>
+				</div>`;
+		}
+	}
 }
 
 function toggleElementVisibility(elementId, isVisible) {
@@ -171,11 +196,13 @@ function myEvaluation() {
 		} else {
 				isAnswerCorrect = true;
 		}
+		results[results.length - 1] = isAnswerCorrect;
 		chosenOptionElement.classList.add(isAnswerCorrect ? 'correct' : 'wrong');
 		answerIsEvaluated = true;
 		hideEvaluationButton();
 		showEvaluationMessage(isAnswerCorrect);
 		showNextQuestionButton();
+		updateProgressBar();
 }
 
 function hideEvaluationButton() {
@@ -226,6 +253,3 @@ function collapseEvaluationContainer() {
 	let evaluationContainerElement = document.getElementById('evaluation-container');
 	evaluationContainerElement.classList.remove('expanded');
 }
-
-
-
