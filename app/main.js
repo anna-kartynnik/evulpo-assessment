@@ -53,10 +53,27 @@ function getExerciseData() {
 
 				shuffledQuestionIndices = shuffleArrayIndices(exerciseData.length);
 
+				hideSpinner();
+				showQuestionContainer();
+
 				showNextQuestion();
 		}, function(response) {
 				console.log('Error: ' + response.result.error.message);
 		});
+}
+
+function hideSpinner() {
+	let spinnerElement = document.getElementById('spinner');
+	if (spinnerElement !== null) {
+		spinnerElement.style = 'display: none;'
+	}
+}
+
+function showQuestionContainer() {
+	let questionContainerElement = document.getElementById('question-container');
+	if (questionContainerElement !== null) {
+		questionContainerElement.style = '';
+	}
 }
 
 function shuffleArrayIndices(length) {

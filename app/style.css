@@ -1,3 +1,6 @@
+.main-container {
+	margin: 2em 0;
+}
 .question{
 	font-weight: bold;
 }
@@ -15,15 +18,14 @@
 .option{
 	width: 100px;
 	height: 50px;
-	 border-radius: 25px;
-	 padding-left:auto;
-	 padding-right:auto;
-	 margin-top:2px;
+	border-radius: 25px;
+	padding-left:auto;
+	padding-right:auto;
+	margin-top:2px;
 }
 .text{
 	font-weight: bold;
 	font-size:16px;
 	color:#0000ff;
 	text-align: center;
-
 }
