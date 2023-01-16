@@ -17,6 +17,7 @@
 </head>
 <body>
 	<div class="main-container text-center h-100">
+
 		<div class="d-flex justify-content-center">
 			<div id="spinner" class="spinner-border text-primary m-3" role="status">
 				<span class="visually-hidden">Loading...</span>
@@ -24,7 +25,7 @@
 		</div>
 
 		<div id="error-container" class="alert alert-danger" role="alert" style="display:none;">
-
+			<!-- Error message will be put here. -->
 		</div>
 
 		<div id="question-container"
@@ -35,10 +36,10 @@
 			</div>
 			<div class="d-flex flex-column justify-content-center">
 				<p id="question" class="question m-3">
-
+					<!-- Question text will be put here. -->
 				</p>
 				<div id="options-wrapper" class="d-flex flex-wrap justify-content-center m-3">
-
+					<!-- Corresponding question answer options will be put here. -->
 				</div>
 			</div>
 
@@ -56,13 +57,13 @@
 				<div id="evaluation-message-body">
 					<p id="correct-answer"></p>
 					<p id="score"></p>
-					<p id="explanation">Here some explanation can be added. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris massa metus, varius sed mauris eget, bibendum porta mauris. Nam ornare venenatis leo sed fringilla. Integer eget elementum eros, nec eleifend nunc. Vestibulum porta, elit at fermentum vehicula, mauris risus sodales eros, a mollis leo arcu id massa. Donec tellus nisl, imperdiet ut ante id, varius convallis turpis. Nunc interdum, turpis sed consequat imperdiet, odio enim sollicitudin lectus, non sodales purus urna quis elit. Vivamus ipsum leo, scelerisque at neque ac, ultricies vulputate ipsum. Duis cursus elit quis libero elementum vestibulum. Nunc in tempor est. Aenean rhoncus ligula id massa pretium euismod. Vestibulum ac placerat massa. Vestibulum ut dapibus arcu, sed iaculis orci. Phasellus condimentum mattis ultrices. Duis placerat augue vel leo pulvinar scelerisque. Fusce imperdiet quam eu magna ultricies, ultrices fringilla nibh semper.</p>
+					<p id="explanation">Here some explanation can be added.<br/>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris massa metus, varius sed mauris eget, bibendum porta mauris. Nam ornare venenatis leo sed fringilla. Integer eget elementum eros, nec eleifend nunc. Vestibulum porta, elit at fermentum vehicula, mauris risus sodales eros, a mollis leo arcu id massa. Donec tellus nisl, imperdiet ut ante id, varius convallis turpis. Nunc interdum, turpis sed consequat imperdiet, odio enim sollicitudin lectus, non sodales purus urna quis elit.<br/>Vivamus ipsum leo, scelerisque at neque ac, ultricies vulputate ipsum. Duis cursus elit quis libero elementum vestibulum. Nunc in tempor est. Aenean rhoncus ligula id massa pretium euismod. Vestibulum ac placerat massa. Vestibulum ut dapibus arcu, sed iaculis orci. Phasellus condimentum mattis ultrices. Duis placerat augue vel leo pulvinar scelerisque. Fusce imperdiet quam eu magna ultricies, ultrices fringilla nibh semper.</p>
 				</div>
 			</div>
 		</div>
 
 		<div id="final-result" class="d-flex flex-column justify-content-around" style="display:none !important;">
-
+			<!-- Simple view of the final score will be put here. -->
 		</div>
 
 		<!-- <button id="next" onClick="window.location.reload();" style="display:none;">Next random question</button> -->
