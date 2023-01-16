@@ -31,8 +31,10 @@ function initClient() {
 		discoveryDocs: DISCOVERY_DOCS
 	}).then(function () {
 		getExerciseData();
-	}, function(error) {
-		console.log(JSON.stringify(error, null, 2));
+	}, function(response) {
+		console.log(JSON.stringify(response, null, 2));
+		hideSpinner();
+		handleError(response?.error?.message ?? 'An error occurred while initializing gapi client.');
 	});
 }
 
@@ -64,7 +66,17 @@ function getExerciseData() {
 		showNextQuestion();
 	}, function(response) {
 		console.log('Error: ' + response.result.error.message);
+		hideSpinner();
+		handleError(response?.result?.error?.message ?? 'An error occurred while retrieving the data.');
 	});
+}
+
+function handleError(errorMessage) {
+	toggleElementVisibility('error-container', true);
+	let errorContainerElement = document.getElementById('error-container');
+	if (errorContainerElement !== null) {
+		errorContainerElement.innerHTML = `Something went wrong (${errorMessage}).`;
+	}
 }
 
 function shuffleArrayIndices(length) {
