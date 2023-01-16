@@ -13,6 +13,7 @@ let exerciseData;
 //let chosen_answer_index;
 let shuffledQuestionIndices = [];
 let answerIsEvaluated = false;
+let isEvaluationExpanded = false;
 let results = [];
 
 const WRONG_ANSWER_MESSAGE = 'Your answer is wrong';
@@ -37,8 +38,8 @@ function initClient() {
 
 function getExerciseData() {
 	gapi.client.sheets.spreadsheets.values.get({
-	 spreadsheetId: '1hzA42BEzt2lPvOAePP6RLLRZKggbg0RWuxSaEwd5xLc',
-	 range: 'Learning!A1:F10',
+		spreadsheetId: '1hzA42BEzt2lPvOAePP6RLLRZKggbg0RWuxSaEwd5xLc',
+		range: 'Learning!A1:F10',
 	}).then(function(response) {
 		console.log(response);
 		console.log(response.result.values);
@@ -271,15 +272,27 @@ function hideEvaluationMessage() {
 	}
 	toggleElementVisibility('evaluation-container', false);
 }
+
+function toggleEvaluationExpansion() {
+	if (isEvaluationExpanded) {
+		collapseEvaluationContainer();
+	} else {
+		expandEvaluationContainer();
+	}
+}
+
 function expandEvaluationContainer() {
 	toggleElementVisibility('expand', false);
 	toggleElementVisibility('collapse', true);
 	let evaluationContainerElement = document.getElementById('evaluation-container');
 	evaluationContainerElement.classList.add('expanded');
+	isEvaluationExpanded = true;
 }
+
 function collapseEvaluationContainer() {
 	toggleElementVisibility('expand', true);
 	toggleElementVisibility('collapse', false);
 	let evaluationContainerElement = document.getElementById('evaluation-container');
 	evaluationContainerElement.classList.remove('expanded');
+	isEvaluationExpanded = false;
 }

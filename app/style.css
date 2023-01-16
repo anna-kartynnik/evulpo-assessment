@@ -99,6 +99,8 @@ html, body {
 	border-top-left-radius: 25px;
 	border-top-right-radius: 25px;
 	height: var(--evaluation-head-height);
+
+	cursor: pointer;
 }
 
 #evaluation-container.correct #evaluation-message-head {

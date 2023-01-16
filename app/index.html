@@ -42,11 +42,12 @@
 				<button id="evaluate" class="btn btn-outline-primary btn-lg" onclick="myEvaluation()">Evaluate!</button>
 			</div>
 			<div id="evaluation-container" style="display: none;">
-				<div id="evaluation-message-head" class="d-flex flex-row justify-content-between align-items-center px-3">
+				<div id="evaluation-message-head" class="d-flex flex-row justify-content-between align-items-center px-3"
+						 onclick="toggleEvaluationExpansion()">
 					<div class="icon"></div>
 					<span id="evaluation-message"></span>
-					<button id="expand" class="btn btn-link" onclick="expandEvaluationContainer()">∧</button>
-					<button id="collapse" class="btn btn-link" onclick="collapseEvaluationContainer()" style="display: none;">∨</button>
+					<button id="expand" class="btn btn-link">∧</button>
+					<button id="collapse" class="btn btn-link" style="display: none;">∨</button>
 				</div>
 				<div id="evaluation-message-body">
 					<p id="correct-answer"></p>
