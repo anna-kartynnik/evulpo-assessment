@@ -1,10 +1,10 @@
 # MY SOLUTIONS
 
 ## TASK 1
-My solution can be found in the `app` folder. It can be run from the root folder in the terminal with `http-server app` or `npx http-server app` commands. For simplicity, I used Bootstrap for some visual components. It worth mentioning that I didn't use the reference image as something I have to duplicate but used it as something similar to what I need to do. (If needed, it can be duplicated.) More details can be found in the code.
+My solution can be found in the `app` folder. It can be run from the root folder in the terminal with `http-server app` or `npx http-server app` commands. For simplicity, I used Bootstrap for some visual components. It's worth mentioning that I didn't use the reference image as something I have to duplicate but used it as something similar to what I need to do. (If needed, it can be duplicated.) More details can be found in the code.
 
 ## TASK 2
-My proposals can be found [at this Figma link](https://www.figma.com/file/aooKEtGVF7K5SNqiIQWOYq/evulpo-2?node-id=678%3A2971&t=NGIuHunV2YVlyNt5-1).
+My proposals can be found [at this Figma link](https://www.figma.com/file/aooKEtGVF7K5SNqiIQWOYq/evulpo-2?node-id=678%3A2971&t=NGIuHunV2YVlyNt5-1). The main idea is not to translate rows individually but do it in batches to save bandwidth, time and API calls. Regarding UI: it depends on what we want. If we just want to be able to translate all the rows to a new language, then a user can just select a new language from a dropdown component, then click one button and all the rest can be done on the backend. If we want to be able to see all the translations for one key, we can group them in the table. I proposed showing all the keys in one language but showing the translations in other languages by request. Individual translations can also be edited (if needed), which will require a simple PUT/PATCH request and the corresponding UPDATE query to the DB.
 
 
 # DEVS INTERVIEWEES TASK
