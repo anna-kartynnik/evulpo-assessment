@@ -1,8 +1,14 @@
+# MY SOLUTIONS
+
+## TASK 1
+My solution can be found in the `app` folder. It can be run from the root folder in the terminal with `http-server app` or `npx http-server app` commands. For simplicity, I used Bootstrap for some visual components. It worth mentioning that I didn't use the reference image as something I have to duplicate but used it as something similar to what I need to do. (If needed, it can be duplicated.) More details can be found in the code.
+
+## TASK 2
+My proposals can be found [at this Figma link](https://www.figma.com/file/aooKEtGVF7K5SNqiIQWOYq/evulpo-2?node-id=678%3A2971&t=NGIuHunV2YVlyNt5-1).
+
+
 # DEVS INTERVIEWEES TASK
 Coding Task for Full Stack Developer at evulpo
-
-# MY SOLUTION
-My solution can be found in the `app` folder. It can be run from the root folder in the terminal with `http-server app` or `npx http-server app` commands. For simplicity, I used Bootstrap for some visual components. It worth mentioning that I didn't use the reference image as something I have to duplicate but used it as something similar to what I need to do. (If needed, it can be duplicated.) More details can be found in the code.
 
 # PURPOSE
 This repository provides the interviewees with an applied coding exercise to checkup development, research, communication, frontend and backend skills. During the following days applicants have time and space to solve the task described bellow.
